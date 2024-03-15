@@ -1,0 +1,52 @@
+* {
+  font-family: Montserrat;
+}
+
+.main {
+  width: 370px;
+  height: 326px;
+  box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  margin: 150px auto auto auto;
+}
+
+.all-pages {
+  padding-top: 10px
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  background: #FFCE22;
+	border-width: 0px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  width: 340px;
+  height: 40px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 4px;
+  margin-top: 5px;
+  font-family: Montserrat;
+}
+
+.button:hover {
+  background-color: #ffd94f;
+}
+
+.button:active {
+  background-color: #FFCE22;
+}
+
+.separator {
+  height: 1px;
+  width: 340px;
+  background-color: #E8E8E8;
+  margin-left: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
