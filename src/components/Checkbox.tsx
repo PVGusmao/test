@@ -29,6 +29,11 @@ export default function Checkbox({name, allChecked, setAllChecked, allCheckbox}:
       return
     }
 
+    if (isChecked && allChecked) {
+      setIsChecked(true)
+      return
+    }
+
     setIsChecked(false);
   }, [allChecked])
 
