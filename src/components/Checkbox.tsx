@@ -1,27 +1,36 @@
 import {useEffect, useState } from 'react';
 import '../styles/checkbox.css';
-import { FaCheck } from 'react-icons/fa'; // Import icons from react-icons library
+import { FaCheck } from 'react-icons/fa';
 
 type Props = {
   name: string
+  allCheckbox?: boolean
   allChecked?: boolean
   setAllChecked?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function Checkbox({name, allChecked, setAllChecked}: Props) {
-  const [isChecked, setIsChecked] = useState(false);
+export default function Checkbox({name, allChecked, setAllChecked, allCheckbox}: Props) {
   const [isHovered, setIsHovered] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxClick = () => {
+    if (allCheckbox && setAllChecked) {
+      setAllChecked(!allChecked)
+      console.log(allChecked)
+      return
+    }
       setIsChecked(!isChecked);
   };
 
   useEffect(() => {
-    if(setAllChecked) {
-      setAllChecked(!allChecked)
+    if (!isChecked && allChecked) {
+      setIsChecked(true)
+      return
     }
-  }, [isChecked])
+
+    setIsChecked(false);
+  }, [allChecked])
 
   return (
     <div
@@ -33,10 +42,10 @@ export default function Checkbox({name, allChecked, setAllChecked}: Props) {
       onMouseOut={() => setIsActive(false)}
     >
       <span className="label">{name}</span>
-      <div className={!(!isChecked && allChecked) || (isChecked && !allChecked) ? 'checkbox checked' : 'checkbox'}>
-        {!(!isChecked && allChecked) || ((isChecked && !allChecked)) ? <FaCheck className="check-icon" /> : ''}
-        {isHovered && (!isChecked || !allChecked) && <FaCheck className="hover-icon" />}
-        {isHovered && isActive && (!isChecked || !allChecked) && <FaCheck className="hover-icon" color='black' />}
+      <div className={(isChecked && !allCheckbox) || (allCheckbox && allChecked) ? 'checkbox checked' : 'checkbox'}>
+        {isChecked && !allCheckbox || allCheckbox && allChecked ? <FaCheck className="check-icon" /> : ''}
+        {isHovered && !isChecked && <FaCheck className="hover-icon" />}
+        {isHovered && isActive && !isChecked && <FaCheck className="hover-icon" color='black' />}
       </div>
     </div>
   );

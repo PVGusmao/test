@@ -10,6 +10,7 @@ function App() {
       <main className='main'>
         <section className='all-pages'>
           <Checkbox
+            allCheckbox
             name='All pages'
             allChecked={allChecked}
             setAllChecked={setAllChecked}
